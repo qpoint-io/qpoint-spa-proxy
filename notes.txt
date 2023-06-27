@@ -1,0 +1,2 @@
+# Port of Marc Barry's SPA proxy
+https://github.com/marc-barry/deno-spa-proxy
