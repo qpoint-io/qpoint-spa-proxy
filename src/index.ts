@@ -20,7 +20,7 @@ export default function proxy(config: SpaConfig) {
     // proxy assets
     .get(`${config.assetsPath}/*`, async (req) => {
       // fetch the origin
-      const origin = config.origins[req.headers.get("Host")]
+      const origin = config.origins[req.headers.get("Host") || 'localhost']
 
       // build the full url
       const destination = `${origin}${new URL(req.url).pathname}`
@@ -42,7 +42,7 @@ export default function proxy(config: SpaConfig) {
     // send everything else to the entrypoint
     .get('*', async (req) => {
       // fetch the origin
-      const origin = config.origins[req.headers.get("Host")]
+      const origin = config.origins[req.headers.get("Host") || 'localhost']
 
       // build the full url
       const destination = `${origin}${config.entryPoint}`
